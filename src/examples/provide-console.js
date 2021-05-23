@@ -40,12 +40,9 @@ const script = await isolate.compileScript(
 
 script.run(context);
 
-// 👍 We're guarded for this usage. Hovewer not the way you'd expect to 😅
-// SyntaxError: Cannot use import statement outside a module [<isolated-vm>:2:5]
-context.evalSync(`import fs from 'fs';`);
+const script = await isolate.compileScript(`console.log('hello 👋')`);
+script.run(context);
 
-// 👍 ReferenceError: process is not defined
-context.evalSync(`
-   console.log(process.config);
-   console.log(process.argv);
- `);
+
+// now console is available on global
+context.evalSync(`console.log('Alive!!!')`);

@@ -27,22 +27,21 @@ script.run(context).catch(console.error);
 try {
   // DON'T DO THIS, at least use IFFE (below is for simplification)
   // 👎 Object is not transferable, so we cannot pass it
-  await jail.set('config', {
+  await jail.set('config', (() => ({
     baseUrl: 'https://example.com',
     permissions: {
       users: false,
       services: true,
     },
-  });
+  }))());
 
   const script = await isolate.compileScript(`log(config)`); // From 📦:  Application name
   script.run(context).catch(console.error);
 } catch (error) {
-  console.log('👎 Object is not transferable, so we cannot pass it');
+  console.log('👎 Object is not transferable, so we cannot pass it', error);
 }
 
 {
-  // DON'T DO THIS, at least use IFFE (below is for simplification)
   // 👍 Object is not transferable, but we can mark it to be passed via reference
   await jail.set(
     'config',
@@ -55,7 +54,6 @@ try {
     })
   );
 
-  // to get reference value - we have to use `defer`
-  const script = await isolate.compileScript(`log(config.derefInto())`); // From 📦:  Application name
-  script.run(context).catch(console.error);
+  // to get reference value - we have to use `deref`
+  await context.eval(`log(config.derefInto())`); // From 📦:  Application name
 }

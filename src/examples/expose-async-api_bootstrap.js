@@ -58,15 +58,6 @@ await bootstrapRef.apply(null, [callback], {
   result: { reference: true },
 });
 
-//   context.evalClosureSync(
-//     `global.fetch = async (...args) => {
-//         const result = await $0.applySync(undefined, args, { arguments: { copy: true }, result: { promise: true } });
-//         return result.derefInto();
-//     }`,
-//     [callback],
-//     { arguments: { reference: true } }
-//   );
-
 // ======= 👨‍💻👩‍💻 Client script =======
 await context.eval(
   `
@@ -79,3 +70,4 @@ await context.eval(
     `,
   { reference: true, promise: true }
 );
+

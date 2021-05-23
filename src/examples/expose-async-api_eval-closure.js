@@ -36,7 +36,7 @@ const dispatchByUrl = (url) => {
 const callback = (url) => dispatchByUrl(url).then((r) => r.json());
 
 // add fetch to context an
-context.evalClosureSync(
+await context.evalClosure(
   `global.fetch = async (...args) => {
         const result = await $0.applySync(undefined, args, { arguments: { copy: true }, result: { promise: true } });
         // since *result* is returned as reference we have to get its value with *derefInto*

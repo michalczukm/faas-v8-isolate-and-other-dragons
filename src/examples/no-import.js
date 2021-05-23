@@ -1,8 +1,8 @@
 /**
  * No import module allowed out of the box.
- * Also - no Node globals available
+ * Also - no Node globals available.
+ * YES - this module throws EXCEPTIONS, it is expected 😉
  */
-import fs from 'fs';
 import ivm from 'isolated-vm';
 const { Isolate } = ivm;
 
@@ -20,10 +20,10 @@ await jail.set('global', jail.derefInto());
 
 // 👍 We're guarded for this usage. Hovewer not the way you'd expect to 😅
 // SyntaxError: Cannot use import statement outside a module [<isolated-vm>:2:5]
-context.evalSync(`import fs from 'fs';`);
+await context.eval(`import fs from 'fs';`);
 
 // 👍 ReferenceError: process is not defined
-context.evalSync(`
+await context.eval(`
   console.log(process.config);
   console.log(process.argv);
 `);
