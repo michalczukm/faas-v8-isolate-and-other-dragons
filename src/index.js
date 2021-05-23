@@ -1,3 +1,7 @@
+/**
+ * This file contains all examples in ONE FILE
+ * If you'd like to go through them piece by piece, please check **examples** folder
+ */
 import fetch from 'node-fetch';
 import ivm from 'isolated-vm';
 import { provideConsole } from './provide-console.js';
