@@ -8,6 +8,10 @@ All files with code samples can be found in [./src](./src)
 
 Should be available soon(ish).
 
+## Presentation
+
+[Embedded on the page - click](https://michalczukm.github.io/faas-v8-isolate-and-other-dragons)
+
 ## About me
 
 [michalczukm.xyz](https://michalczukm.xyz)
