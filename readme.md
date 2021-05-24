@@ -1,4 +1,16 @@
-# FaaS dragons
+# FaaS - Isolated V8 and other dragons
+
+👋 This is code for "FaaS - Isolated V8 and other dragons" presentation
+
+All files with code samples can be found in [./src](./src)
+
+## Videos
+
+Should be available soon(ish).
+
+## About me
+
+[michalczukm.xyz](https://michalczukm.xyz)
 
 ## Requirements
 
